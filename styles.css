@@ -1,0 +1,13 @@
+.day1-column,
+.day2-column,
+.day3-column,
+.day4-column,
+.day5-column,
+.day6-column {
+  text-align: center;
+}
+
+.today-icon {
+  padding: 6px;
+  font-size: 18px;
+}
