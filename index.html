@@ -17,59 +17,77 @@
     <br />
     <div class="container">
       <div class="weather-app">
-        <form class="row g-2" id="city-form">
-          <div class="col-auto">
-            <input
-              type="search"
-              class="form-control"
-              placeholder="Enter a city..."
-              autofocus="on"
-              autocomplete="off"
-              id="city-input"
-            />
-          </div>
-          <div class="col-auto">
-            <button type="submit" value="Search" class="btn btn-primary mb-3">
-              Search
-            </button>
+        <form class="search-form" id="search-form">
+          <div class="row col-12">
+            <div class="col-4">
+              <input
+                type="search"
+                class="form-control"
+                placeholder="Enter city..."
+                autofocus="on"
+                autocomplete="off"
+                id="city-input"
+              />
+            </div>
+            <div class="col-auto">
+              <button
+                type="submit"
+                value="Search"
+                class="form-control btn btn-primary w-100"
+              >
+                Search
+              </button>
+            </div>
+
+            <div class="col-auto">
+              <button
+                class="btn btn-success w-100"
+                id="current-location-button"
+              >
+                Current
+              </button>
+            </div>
+
+            <div class="col-auto">
+              <div
+                class="btn-group"
+                role="group"
+                aria-label="Basic radio toggle button group"
+              >
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="btnradio1"
+                  autocomplete="off"
+                  checked
+                />
+                <label class="btn btn-outline-primary" for="btnradio1"
+                  >°F</label
+                >
+
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="btnradio2"
+                  autocomplete="off"
+                />
+                <label class="btn btn-outline-primary" for="btnradio2"
+                  >°C</label
+                >
+              </div>
+            </div>
           </div>
         </form>
-        <div class="col-auto">
-          <button type="submit" class="btn btn-primary mb-3">Current</button>
-        </div>
-
-        <div class="col-auto">
-          <div
-            class="btn-group"
-            role="group"
-            aria-label="Basic radio toggle button group"
-          >
-            <input
-              type="radio"
-              class="btn-check"
-              name="btnradio"
-              id="btnradio1"
-              autocomplete="off"
-              checked
-            />
-            <label class="btn btn-outline-primary" for="btnradio1">°F</label>
-
-            <input
-              type="radio"
-              class="btn-check"
-              name="btnradio"
-              id="btnradio2"
-              autocomplete="off"
-            />
-            <label class="btn btn-outline-primary" for="btnradio2">°C</label>
-          </div>
-        </div>
+        <br />
 
         <h1 class="city-title">Chicago</h1>
-        <h5 class="today"></h5>
+
         <div class="card today-weather">
           <div class="card-body">
             <div class="row col-12">
+              <h5 class="today"></h5>
               <div class="col-sm-auto today-icon">
                 <p>
                   <i class="fa-solid fa-sun fa-2xl"></i>
