@@ -36,27 +36,57 @@ now.innerHTML = formatDate(new Date());
 
 //Current weather
 function showWeather(response) {
-  console.log(response.data);
-  document.querySelector(".city-title").innerHTML = response.data.name;
-  document.querySelector("#current-temp").innerHTML = Math.round(
-    response.data.main.temp
-  );
-  document.querySelector("#current-humidity").innerHTML = Math.round(
-    response.data.main.humidity
-  );
-  document.querySelector("#current-windspeed").innerHTML = Math.round(
-    response.data.wind.speed
-  );
-  document.querySelector("#current-description").innerHTML =
-    response.data.weather[0].main;
+  //OpenWeather Data
+  //console.log(response.data);
+  //document.querySelector(".city-title").innerHTML = response.data.name;
+  //document.querySelector("#current-temp").innerHTML = Math.round(response.data.main.temp);
+  //document.querySelector("#current-humidity").innerHTML = Math.round(response.data.main.humidity);
+  //document.querySelector("#current-windspeed").innerHTML = Math.round(response.data.wind.speed);
+  //document.querySelector("#current-description").innerHTML = response.data.weather[0].main;
+
+  //SheCodes Weather Data
+
+  if (response.data.city) {
+    console.log(response.data);
+    document.querySelector(".city-title").innerHTML = response.data.city;
+    document.querySelector("#current-temp").innerHTML = Math.round(
+      response.data.temperature.current
+    );
+    document.querySelector("#current-humidity").innerHTML = Math.round(
+      response.data.temperature.humidity
+    );
+    document.querySelector("#current-windspeed").innerHTML = Math.round(
+      response.data.wind.speed
+    );
+    document.querySelector("#current-description").innerHTML =
+      response.data.condition.description;
+    document.querySelector("#weather-icon-today").src =
+      response.data.condition.icon_url;
+  } else {
+    console.log("Error: Invalid city name");
+  }
 }
 
 //Search trigger
 function search(cityName) {
-  let apiKey = "0f8bc384a7c31b717a18cfe38a95ae06";
-  let unitName = "imperial";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=${unitName}`;
-  axios.get(apiUrl).then(showWeather);
+  //OpenWeather API
+  //let keyOpenWeather = "0f8bc384a7c31b717a18cfe38a95ae06";
+  //let unitOpenWeather = "imperial";
+  //let urlOpenWeather = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${keyOpenWeather}&units=${unitOpenWeather}`;
+  //console.log(urlOpenWeather);
+  //axios.get(urlOpenWeather).then(showWeather);
+
+  //SheCodes Weather API
+  let keySheCodes = "0ae8ed0af65d0db03aet4f1o89f6d9a8";
+  let unitSheCodes = "imperial";
+  let urlSheCodes = `https://api.shecodes.io/weather/v1/current?query=${cityName}&key=${keySheCodes}&units=${unitSheCodes}`;
+  console.log(urlSheCodes);
+  axios
+    .get(urlSheCodes)
+    .then(showWeather)
+    .catch((error) => {
+      console.log("Error fetching data from the SheCodes Weather API:", error);
+    });
 }
 
 //City input
@@ -67,11 +97,24 @@ function handleSubmit(event) {
 }
 
 function searchLocation(position) {
-  let apiKey = "0f8bc384a7c31b717a18cfe38a95ae06";
-  let unitName = "imperial";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${unitName}`;
-  console.log(apiUrl);
-  axios.get(apiUrl).then(showWeather);
+  //OpenWeather API
+  //let apiKey = "0f8bc384a7c31b717a18cfe38a95ae06";
+  //let unitName = "imperial";
+  //let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${unitName}`;
+  //console.log(apiUrl);
+  //axios.get(apiUrl).then(showWeather);
+
+  //SheCodes Weather API
+  let keySheCodes = "0ae8ed0af65d0db03aet4f1o89f6d9a8";
+  let unitSheCodes = "imperial";
+  let urlSheCodes = `https://api.shecodes.io/weather/v1/current?lon=${position.coords.longitude}&lat=${position.coords.latitude}&key=${keySheCodes}&units=${unitSheCodes}`;
+  console.log(urlSheCodes);
+  axios
+    .get(urlSheCodes)
+    .then(showWeather)
+    .catch((error) => {
+      console.log("Error fetching data from the SheCodes Weather API:", error);
+    });
 }
 
 function getCurrentLocation(event) {
