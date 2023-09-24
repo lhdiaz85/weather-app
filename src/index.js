@@ -27,7 +27,7 @@ function formatDate(now) {
   if (mins < 10) {
     mins = `0${mins}`;
   }
-  let today = `${day} ${month} ${date} ${hours}:${mins}`;
+  let today = `${day}, ${month} ${date} ${hours}:${mins}`;
   return today;
 }
 

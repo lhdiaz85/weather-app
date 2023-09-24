@@ -1,13 +1,66 @@
-.day1-column,
-.day2-column,
-.day3-column,
-.day4-column,
-.day5-column,
-.day6-column {
+h1 {
   text-align: center;
 }
 
-.today-icon {
-  padding: 6px;
-  font-size: 18px;
+h2 {
+  font-size: 34px;
+  padding-top: 25px;
+  margin: 0;
+}
+
+.weather-app {
+  width: 360px;
+  margin: 0 auto;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+#day1-icon {
+  width: 70px;
+}
+
+.today-rates {
+  text-align: center;
+}
+
+.icon-title {
+  font-size: 15px;
+}
+
+.today {
+  text-align: center;
+}
+
+.today-weather {
+  border: solid;
+  border-color: blue;
+}
+
+#feel-today,
+#humidity-today,
+#wind-today {
+  text-align: center;
+}
+
+.week-weather {
+  border: solid;
+  border-color: blue;
+}
+
+.day1-title {
+  margin: 0 auto;
+
+  padding-top: 23px;
+}
+
+.day1-temp {
+  margin: 0 auto;
+
+  padding-top: 23px;
+}
+
+#day1-container {
+  text-align: center;
 }
