@@ -48,20 +48,30 @@ function showWeather(response) {
 
   if (response.data.city) {
     console.log(response.data);
+
     document.querySelector(".city-title").innerHTML = response.data.city;
+
+    document.querySelector("#weather-icon-today").src =
+      response.data.condition.icon_url;
+
     document.querySelector("#current-temp").innerHTML = Math.round(
       response.data.temperature.current
     );
+
+    document.querySelector("#current-description").innerHTML =
+      response.data.condition.description;
+
+    document.querySelector("#current-feel").innerHTML = Math.round(
+      response.data.temperature.feels_like
+    );
+
     document.querySelector("#current-humidity").innerHTML = Math.round(
       response.data.temperature.humidity
     );
+
     document.querySelector("#current-windspeed").innerHTML = Math.round(
       response.data.wind.speed
     );
-    document.querySelector("#current-description").innerHTML =
-      response.data.condition.description;
-    document.querySelector("#weather-icon-today").src =
-      response.data.condition.icon_url;
   } else {
     console.log("Error: Invalid city name");
   }

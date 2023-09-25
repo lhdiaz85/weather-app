@@ -1,3 +1,8 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0 auto;
+}
+
 h1 {
   text-align: center;
 }
@@ -8,13 +13,10 @@ h2 {
   margin: 0;
 }
 
-.weather-app {
-  width: 360px;
-  margin: 0 auto;
-}
-
 .container {
   margin: 0 auto;
+  max-width: 400px;
+  padding: 0px 5px;
 }
 
 #day1-icon {
@@ -41,6 +43,12 @@ h2 {
 #feel-today,
 #humidity-today,
 #wind-today {
+  text-align: center;
+}
+
+#feel-day1,
+#humidity-day1,
+#wind-day1 {
   text-align: center;
 }
 
