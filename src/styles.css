@@ -44,7 +44,7 @@ h2 {
   text-align: center;
 }
 
-.week-weather {
+#week-weather {
   border: solid;
   border-color: blue;
 }
@@ -52,13 +52,13 @@ h2 {
 .day1-title {
   margin: 0 auto;
 
-  padding-top: 23px;
+  padding-top: 5px;
 }
 
 .day1-temp {
   margin: 0 auto;
 
-  padding-top: 23px;
+  padding-top: 5px;
 }
 
 #day1-container {
@@ -67,4 +67,12 @@ h2 {
 
 .footer {
   text-align: center;
+}
+
+.accordion-body {
+  padding: 16px 0px;
+}
+
+#day1-button {
+  padding: 0px 13px;
 }

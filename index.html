@@ -108,7 +108,7 @@
               <i class="fa-solid fa-temperature-empty"></i>
               <span class="icon-title">FEELS LIKE</span>
               <br />
-              64°
+              <span id="current-feel">64</span>°
             </div>
             <div class="col-4" id="humidity-today">
               <i class="fa-solid fa-droplet"></i>
@@ -128,53 +128,70 @@
 
         <br />
 
-        <div class="week-weather">
-          <div class="d-flex flex-row" id="day1-container">
-            <div class="col-3">
-              <h5 class="day1-title">THURS</h5>
-            </div>
-            <div class="col-3">
-              <img
-                id="day1-icon"
-                src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png"
-                alt=""
-              />
-            </div>
+        <div class="accordion" id="week-weather">
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseTwo"
+                aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseTwo"
+                id="day1-button"
+              >
+                <div class="col-3">
+                  <h5 class="day1-title">Mon</h5>
+                </div>
+                <div class="col-4">
+                  <img
+                    id="day1-icon"
+                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png"
+                    alt=""
+                  />
+                </div>
 
-            <div class="col-3">
-              <h6 class="day1-temp">
-                <span><i class="fa-solid fa-arrow-up"></i> 100° </span>
-              </h6>
-            </div>
+                <div class="col-2">
+                  <h6 class="day1-temp">
+                    <i class="fa-solid fa-arrow-up"></i>
+                    <span class="day1-high">80</span>°
+                  </h6>
+                </div>
 
-            <div class="col-3">
-              <h6 class="day1-temp">
-                <span> <i class="fa-solid fa-arrow-down"></i> 100° </span>
-              </h6>
+                <div class="col-2">
+                  <h6 class="day1-temp">
+                    <i class="fa-solid fa-arrow-down"></i>
+                    <span class="day1-low">75</span>°
+                  </h6>
+                </div>
+              </button>
             </div>
-          </div>
-          <div class="d-flex flex-row" id="day1-container">
-            <div class="col-3">
-              <h5 class="day1-title">MON</h5>
-            </div>
-            <div class="col-3">
-              <img
-                id="day1-icon"
-                src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png"
-                alt=""
-              />
-            </div>
-
-            <div class="col-3">
-              <h6 class="day1-temp">
-                <span><i class="fa-solid fa-arrow-up"></i> 100° </span>
-              </h6>
-            </div>
-
-            <div class="col-3">
-              <h6 class="day1-temp">
-                <span> <i class="fa-solid fa-arrow-down"></i> 100° </span>
-              </h6>
+            <div
+              id="panelsStayOpen-collapseTwo"
+              class="accordion-collapse collapse"
+            >
+              <div class="accordion-body">
+                <div class="d-flex flex-row">
+                  <div class="col-4" id="feel-today">
+                    <i class="fa-solid fa-temperature-empty"></i>
+                    <span class="icon-title">FEELS LIKE</span>
+                    <br />
+                    <span id="current-feel">64</span>°
+                  </div>
+                  <div class="col-4" id="humidity-today">
+                    <i class="fa-solid fa-droplet"></i>
+                    <span class="icon-title">HUMIDITY</span>
+                    <br />
+                    <span id="current-humidity">77</span>%
+                  </div>
+                  <div class="col-4" id="wind-today">
+                    <i class="fa-solid fa-wind"></i>
+                    <span class="icon-title">WIND</span>
+                    <br />
+                    <span id="current-windspeed">8</span> mph
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
