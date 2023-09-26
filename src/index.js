@@ -1,3 +1,6 @@
+let button1 = document.querySelector("#btnradio1");
+let button2 = document.querySelector("#btnradio2");
+
 //Current time
 
 function formatDate(now) {
@@ -74,6 +77,8 @@ function showWeather(response) {
     document.querySelector("#current-windspeed").innerHTML = Math.round(
       response.data.wind.speed
     );
+
+    checkedFarenheit();
   } else {
     console.log("Error: Invalid city name");
   }
@@ -134,19 +139,29 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-function convertFarenheit(event) {
-  event.preventDefault();
-  let tempElement = document.querySelector("#current-temp");
-  tempElement.innerHTML = Math.round(farenheitTemperature);
+function checkedFarenheit() {
+  button1.checked = true;
+  button2.checked = false;
   console.log("Farenheit selected");
 }
 
-function convertCelsius(event) {
-  event.preventDefault();
+function checkedCelsius() {
+  button1.checked = false;
+  button2.checked = true;
+  console.log("Celsius selected");
+}
+
+function convertFarenheit() {
+  let tempElement = document.querySelector("#current-temp");
+  tempElement.innerHTML = Math.round(farenheitTemperature);
+  checkedFarenheit();
+}
+
+function convertCelsius() {
   let tempElement = document.querySelector("#current-temp");
   let celsiusTemperature = (farenheitTemperature - 32) * (5 / 9);
   tempElement.innerHTML = Math.round(celsiusTemperature);
-  console.log("Celsius selected");
+  checkedCelsius();
 }
 
 let farenheitTemperature = null;
