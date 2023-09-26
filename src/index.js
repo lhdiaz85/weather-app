@@ -49,6 +49,8 @@ function showWeather(response) {
   if (response.data.city) {
     console.log(response.data);
 
+    farenheitTemperature = response.data.temperature.current;
+
     document.querySelector(".city-title").innerHTML = response.data.city;
 
     document.querySelector("#weather-icon-today").src =
@@ -128,15 +130,38 @@ function searchLocation(position) {
 }
 
 function getCurrentLocation(event) {
-  event.preventDefault;
+  event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
+
+function convertFarenheit(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#current-temp");
+  tempElement.innerHTML = Math.round(farenheitTemperature);
+  console.log("Farenheit selected");
+}
+
+function convertCelsius(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#current-temp");
+  let celsiusTemperature = (farenheitTemperature - 32) * (5 / 9);
+  tempElement.innerHTML = Math.round(celsiusTemperature);
+  console.log("Celsius selected");
+}
+
+let farenheitTemperature = null;
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
+
+let farenheitButton = document.querySelector("#btnradio1");
+farenheitButton.addEventListener("click", convertFarenheit);
+
+let celsiusButton = document.querySelector("#btnradio2");
+celsiusButton.addEventListener("click", convertCelsius);
 
 //City default
 search("Chicago");
