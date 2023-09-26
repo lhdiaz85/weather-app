@@ -3,7 +3,7 @@ let button2 = document.querySelector("#btnradio2");
 
 //Current time
 
-function formatDate(now) {
+function formatCurrentDate(now) {
   let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
   let day = days[now.getDay()];
   let months = [
@@ -35,16 +35,24 @@ function formatDate(now) {
 }
 
 let now = document.querySelector(".today");
-now.innerHTML = formatDate(new Date());
+now.innerHTML = formatCurrentDate(new Date());
+
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  return days[day];
+}
 
 //Forecast
 function showForecast(response) {
-  console.log(response.data);
+  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#week-weather");
   //let classNames = ["One", "Two", "Three", "Four", "Five", "Six", "Seven"];
   let forecastHTML = "";
-  let days = ["Wed", "Thurs", "Fri", "Sat", "Sun", "Mon", "Tues"];
-  days.forEach(function (day) {
+  //let days = ["Wed", "Thurs", "Fri", "Sat", "Sun", "Mon", "Tues"];
+  forecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `
@@ -54,18 +62,24 @@ function showForecast(response) {
                 class="accordion-button collapsed"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseTwo"
+                data-bs-target="#panelsStayOpen-collapse${formatForecastDay(
+                  forecastDay.time
+                )}"
                 aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseTwo"
+                aria-controls="panelsStayOpen-collapse${formatForecastDay(
+                  forecastDay.time
+                )}"
                 id="day1-button"
               >
                 <div class="col-3">
-                  <h5 class="day1-title">${day}</h5>
+                  <h5 class="day1-title">${formatForecastDay(
+                    forecastDay.time
+                  )}</h5>
                 </div>
                 <div class="col-4">
                   <img
                     id="day1-icon"
-                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png"
+                    src="${forecastDay.condition.icon_url}"
                     alt=""
                   />
                 </div>
@@ -73,20 +87,24 @@ function showForecast(response) {
                 <div class="col-2">
                   <h6 class="day1-temp">
                     <i class="fa-solid fa-arrow-up"></i>
-                    <span class="day1-high">80</span>°
+                    <span class="day1-high">${Math.round(
+                      forecastDay.temperature.maximum
+                    )}</span>°
                   </h6>
                 </div>
 
                 <div class="col-2">
                   <h6 class="day1-temp">
                     <i class="fa-solid fa-arrow-down"></i>
-                    <span class="day1-low">75</span>°
+                    <span class="day1-low">${Math.round(
+                      forecastDay.temperature.minimum
+                    )}</span>°
                   </h6>
                 </div>
               </button>
             </div>
             <div
-              id="panelsStayOpen-collapseTwo"
+              id="panelsStayOpen-collapse${formatForecastDay(forecastDay.time)}"
               class="accordion-collapse collapse"
             >
               <div class="accordion-body">
@@ -95,19 +113,25 @@ function showForecast(response) {
                     <i class="fa-solid fa-temperature-empty"></i>
                     <span class="icon-title">WEATHER</span>
                     <br />
-                    <span id="day1-feel">scattered clouds</span>
+                    <span id="day1-feel">${
+                      forecastDay.condition.description
+                    }</span>
                   </div>
                   <div class="col-4" id="humidity-day1">
                     <i class="fa-solid fa-droplet"></i>
                     <span class="icon-title">HUMIDITY</span>
                     <br />
-                    <span id="day1-humidity">77</span>%
+                    <span id="day1-humidity">${
+                      forecastDay.temperature.humidity
+                    }</span>%
                   </div>
                   <div class="col-4" id="wind-day1">
                     <i class="fa-solid fa-wind"></i>
                     <span class="icon-title">WIND</span>
                     <br />
-                    <span id="day1-windspeed">8</span> mph
+                    <span id="day1-windspeed">${Math.round(
+                      forecastDay.wind.speed
+                    )}</span> mph
                   </div>
                 </div>
               </div>
@@ -152,9 +176,8 @@ function showWeather(response) {
       response.data.temperature.feels_like
     );
 
-    document.querySelector("#current-humidity").innerHTML = Math.round(
-      response.data.temperature.humidity
-    );
+    document.querySelector("#current-humidity").innerHTML =
+      response.data.temperature.humidity;
 
     document.querySelector("#current-windspeed").innerHTML = Math.round(
       response.data.wind.speed
