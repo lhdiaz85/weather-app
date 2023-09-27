@@ -19,10 +19,6 @@ h2 {
   padding: 0px 5px;
 }
 
-#day1-icon {
-  width: 70px;
-}
-
 .today-rates {
   text-align: center;
 }
@@ -46,30 +42,58 @@ h2 {
   text-align: center;
 }
 
-#feel-day1,
-#humidity-day1,
-#wind-day1 {
-  text-align: center;
-}
-
 #week-weather {
   border: solid;
   border-color: blue;
 }
 
-.day1-title {
+.titleDay {
   margin: 0 auto;
 
   padding-top: 5px;
 }
 
-.day1-temp {
+.tempDay {
   margin: 0 auto;
 
   padding-top: 5px;
 }
 
-#day1-container {
+#buttonSun,
+#buttonMon,
+#buttonTues,
+#buttonWed,
+#buttonThurs,
+#buttonFri,
+#buttonSat {
+  padding: 0px 13px;
+}
+
+.iconDay {
+  width: 70px;
+}
+
+#firstColumnSun,
+#firstColumnMon,
+#firstColumnTues,
+#firstColumnWed,
+#firstColumnThurs,
+#firstColumnFri,
+#firstColumnSat,
+#secondColumnSun,
+#secondColumnMon,
+#secondColumnTues,
+#secondColumnWed,
+#secondColumnThurs,
+#secondColumnFri,
+#secondColumnSat,
+#thirdColumnSun,
+#thirdColumnMon,
+#thirdColumnTues,
+#thirdColumnWed,
+#thirdColumnThurs,
+#thirdColumnFri,
+#thirdColumnSat {
   text-align: center;
 }
 
@@ -79,8 +103,4 @@ h2 {
 
 .accordion-body {
   padding: 16px 0px;
-}
-
-#day1-button {
-  padding: 0px 13px;
 }

@@ -69,36 +69,36 @@ function showForecast(response) {
                 aria-controls="panelsStayOpen-collapse${formatForecastDay(
                   forecastDay.time
                 )}"
-                id="day1-button"
+                id="button${formatForecastDay(forecastDay.time)}"
               >
                 <div class="col-3">
-                  <h5 class="day1-title">${formatForecastDay(
-                    forecastDay.time
-                  )}</h5>
+                  <h5 class="titleDay">
+                    ${formatForecastDay(forecastDay.time)}
+                  </h5>
                 </div>
                 <div class="col-4">
                   <img
-                    id="day1-icon"
+                    class="iconDay"
                     src="${forecastDay.condition.icon_url}"
                     alt=""
                   />
                 </div>
 
                 <div class="col-2">
-                  <h6 class="day1-temp">
+                  <h6 class="tempDay">
                     <i class="fa-solid fa-arrow-up"></i>
-                    <span class="day1-high">${Math.round(
-                      forecastDay.temperature.maximum
-                    )}</span>°
+                    <span class="high${formatForecastDay(forecastDay.time)}"
+                      >${Math.round(forecastDay.temperature.maximum)}</span
+                    >°
                   </h6>
                 </div>
 
                 <div class="col-2">
-                  <h6 class="day1-temp">
+                  <h6 class="tempDay">
                     <i class="fa-solid fa-arrow-down"></i>
-                    <span class="day1-low">${Math.round(
-                      forecastDay.temperature.minimum
-                    )}</span>°
+                    <span class="low${formatForecastDay(forecastDay.time)}"
+                      >${Math.round(forecastDay.temperature.minimum)}</span
+                    >°
                   </h6>
                 </div>
               </button>
@@ -109,29 +109,42 @@ function showForecast(response) {
             >
               <div class="accordion-body">
                 <div class="d-flex flex-row">
-                  <div class="col-4" id="feel-day1">
+                  <div
+                    class="col-4"
+                    id="firstColumn${formatForecastDay(forecastDay.time)}"
+                  >
                     <i class="fa-solid fa-temperature-empty"></i>
                     <span class="icon-title">WEATHER</span>
                     <br />
-                    <span id="day1-feel">${
-                      forecastDay.condition.description
-                    }</span>
+                    <span
+                      class="description${formatForecastDay(forecastDay.time)}"
+                      >${forecastDay.condition.description}</span
+                    >
                   </div>
-                  <div class="col-4" id="humidity-day1">
+                  <div
+                    class="col-4"
+                    id="secondColumn${formatForecastDay(forecastDay.time)}"
+                  >
                     <i class="fa-solid fa-droplet"></i>
                     <span class="icon-title">HUMIDITY</span>
                     <br />
-                    <span id="day1-humidity">${
-                      forecastDay.temperature.humidity
-                    }</span>%
+                    <span
+                      class="humidity${formatForecastDay(forecastDay.time)}"
+                      >${forecastDay.temperature.humidity}</span
+                    >%
                   </div>
-                  <div class="col-4" id="wind-day1">
+                  <div
+                    class="col-4"
+                    id="thirdColumn${formatForecastDay(forecastDay.time)}"
+                  >
                     <i class="fa-solid fa-wind"></i>
                     <span class="icon-title">WIND</span>
                     <br />
-                    <span id="day1-windspeed">${Math.round(
-                      forecastDay.wind.speed
-                    )}</span> mph
+                    <span
+                      class="windspeed${formatForecastDay(forecastDay.time)}"
+                      >${Math.round(forecastDay.wind.speed)}</span
+                    >
+                    mph
                   </div>
                 </div>
               </div>
