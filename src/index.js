@@ -44,6 +44,10 @@ function formatForecastDay(timestamp) {
   return days[day];
 }
 
+function formatIndexLabel(index) {
+  return index + `Day`;
+}
+
 //Forecast
 function showForecast(response) {
   console.log(response.data.daily);
@@ -52,7 +56,7 @@ function showForecast(response) {
   //let classNames = ["One", "Two", "Three", "Four", "Five", "Six", "Seven"];
   let forecastHTML = "";
   //let days = ["Wed", "Thurs", "Fri", "Sat", "Sun", "Mon", "Tues"];
-  forecast.forEach(function (forecastDay) {
+  forecast.forEach(function (forecastDay, index) {
     forecastHTML =
       forecastHTML +
       `
@@ -87,7 +91,7 @@ function showForecast(response) {
                 <div class="col-2">
                   <h6 class="tempDay">
                     <i class="fa-solid fa-arrow-up"></i>
-                    <span class="high${formatForecastDay(forecastDay.time)}"
+                    <span class="high${formatIndexLabel(index)}"
                       >${Math.round(forecastDay.temperature.maximum)}</span
                     >°
                   </h6>
@@ -96,7 +100,7 @@ function showForecast(response) {
                 <div class="col-2">
                   <h6 class="tempDay">
                     <i class="fa-solid fa-arrow-down"></i>
-                    <span class="low${formatForecastDay(forecastDay.time)}"
+                    <span class="low${formatIndexLabel(index)}"
                       >${Math.round(forecastDay.temperature.minimum)}</span
                     >°
                   </h6>
@@ -117,7 +121,7 @@ function showForecast(response) {
                     <span class="icon-title">WEATHER</span>
                     <br />
                     <span
-                      class="description${formatForecastDay(forecastDay.time)}"
+                      class="description${formatIndexLabel(index)}"
                       >${forecastDay.condition.description}</span
                     >
                   </div>
@@ -129,7 +133,7 @@ function showForecast(response) {
                     <span class="icon-title">HUMIDITY</span>
                     <br />
                     <span
-                      class="humidity${formatForecastDay(forecastDay.time)}"
+                      class="humidity${formatIndexLabel(index)}"
                       >${forecastDay.temperature.humidity}</span
                     >%
                   </div>
@@ -141,7 +145,7 @@ function showForecast(response) {
                     <span class="icon-title">WIND</span>
                     <br />
                     <span
-                      class="windspeed${formatForecastDay(forecastDay.time)}"
+                      class="windspeed${formatIndexLabel(index)}"
                       >${Math.round(forecastDay.wind.speed)}</span
                     >
                     mph
