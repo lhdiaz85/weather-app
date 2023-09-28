@@ -145,8 +145,7 @@ function showForecast(response) {
                     <span
                       class="wind${formatIndexLabel(index)}"
                       >${Math.round(forecastDay.wind.speed)}</span
-                    >
-                    mph
+                    > <span> mph </span>
                   </div>
                 </div>
               </div>
