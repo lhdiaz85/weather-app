@@ -145,7 +145,8 @@ function showForecast(response) {
                     <span
                       class="wind${formatIndexLabel(index)}"
                       >${Math.round(forecastDay.wind.speed)}</span
-                    > <span> mph </span>
+                    >
+                    <span class="windUnit${formatIndexLabel(index)}">mph</span>
                   </div>
                 </div>
               </div>
@@ -220,6 +221,7 @@ function showWeather(response) {
     mphWind = response.data.wind.speed;
     //Update Button
     checkedFarenheit();
+    mphConversion();
   } else {
     console.log("Error: Invalid city name");
   }
@@ -297,10 +299,70 @@ function checkedFarenheit() {
   console.log("Farenheit selected");
 }
 
+function mphConversion() {
+  let mphUnitHTML = "mph";
+
+  //Current
+  let windUnitElement = document.querySelector(".windUnit");
+  windUnitElement.innerHTML = mphUnitHTML;
+
+  //Forecast
+  let windUnitFirstElement = document.querySelector(".windUnit0Day");
+  windUnitFirstElement.innerHTML = mphUnitHTML;
+
+  let windUnitSecondElement = document.querySelector(".windUnit1Day");
+  windUnitSecondElement.innerHTML = mphUnitHTML;
+
+  let windUnitThirdElement = document.querySelector(".windUnit2Day");
+  windUnitThirdElement.innerHTML = mphUnitHTML;
+
+  let windUnitFourthElement = document.querySelector(".windUnit3Day");
+  windUnitFourthElement.innerHTML = mphUnitHTML;
+
+  let windUnitFifthElement = document.querySelector(".windUnit4Day");
+  windUnitFifthElement.innerHTML = mphUnitHTML;
+
+  let windUnitSixthElement = document.querySelector(".windUnit5Day");
+  windUnitSixthElement.innerHTML = mphUnitHTML;
+
+  let windUnitSeventhElement = document.querySelector(".windUnit6Day");
+  windUnitSeventhElement.innerHTML = mphUnitHTML;
+}
+
 function checkedCelsius() {
   button1.checked = false;
   button2.checked = true;
   console.log("Celsius selected");
+}
+
+function kmphConversion() {
+  let kmphUnitHTML = "kmph";
+
+  //Current
+  let windUnitElement = document.querySelector(".windUnit");
+  windUnitElement.innerHTML = kmphUnitHTML;
+
+  //Forecast
+  let windUnitFirstElement = document.querySelector(".windUnit0Day");
+  windUnitFirstElement.innerHTML = kmphUnitHTML;
+
+  let windUnitSecondElement = document.querySelector(".windUnit1Day");
+  windUnitSecondElement.innerHTML = kmphUnitHTML;
+
+  let windUnitThirdElement = document.querySelector(".windUnit2Day");
+  windUnitThirdElement.innerHTML = kmphUnitHTML;
+
+  let windUnitFourthElement = document.querySelector(".windUnit3Day");
+  windUnitFourthElement.innerHTML = kmphUnitHTML;
+
+  let windUnitFifthElement = document.querySelector(".windUnit4Day");
+  windUnitFifthElement.innerHTML = kmphUnitHTML;
+
+  let windUnitSixthElement = document.querySelector(".windUnit5Day");
+  windUnitSixthElement.innerHTML = kmphUnitHTML;
+
+  let windUnitSeventhElement = document.querySelector(".windUnit6Day");
+  windUnitSeventhElement.innerHTML = kmphUnitHTML;
 }
 
 function convertFarenheit() {
@@ -390,6 +452,7 @@ function convertFarenheit() {
 
   //Update Button
   checkedFarenheit();
+  mphConversion();
 }
 
 function convertCelsius() {
@@ -503,6 +566,7 @@ function convertCelsius() {
 
   //Update Button
   checkedCelsius();
+  kmphConversion();
 }
 
 // Current Weather
