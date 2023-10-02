@@ -1,10 +1,16 @@
 body {
   font-family: "Roboto", sans-serif;
   margin: 0 auto;
+  background: linear-gradient(
+    120deg,
+    rgb(240, 225, 253) 0%,
+    rgb(195, 226, 255) 100%
+  );
 }
 
 h1 {
   text-align: center;
+  text-shadow: 2px 1px 4px white;
 }
 
 h2 {
@@ -32,8 +38,11 @@ h2 {
 }
 
 .today-weather {
-  border: solid;
-  border-color: blue;
+  border: 3px solid;
+  border-color: #c4d0f1;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 #feel-today,
@@ -43,8 +52,10 @@ h2 {
 }
 
 #week-weather {
-  border: solid;
-  border-color: blue;
+  border: 3px solid;
+  border-color: #c4d0f1;
+  border-radius: 10px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .titleDay {
@@ -103,4 +114,9 @@ h2 {
 
 .accordion-body {
   padding: 16px 0px;
+  background-color: #ffffff;
+}
+
+.accordion-button {
+  background-color: white;
 }
