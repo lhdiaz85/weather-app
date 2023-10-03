@@ -3,18 +3,20 @@ body {
   margin: 0 auto;
   background: linear-gradient(
     120deg,
-    rgb(240, 225, 253) 0%,
-    rgb(195, 226, 255) 100%
+    rgb(186, 151, 253) 0%,
+    rgb(94, 162, 255) 100%
   );
 }
 
 h1 {
   text-align: center;
-  text-shadow: 2px 1px 4px white;
+  font-size: 40px;
+  color: #ffffff;
+  text-shadow: 2px 1px 4px black;
 }
 
 h2 {
-  font-size: 34px;
+  font-size: 40px;
   padding-top: 25px;
   margin: 0;
 }
@@ -35,6 +37,8 @@ h2 {
 
 .today {
   text-align: center;
+  color: #ffffff;
+  text-shadow: 2px 1px 4px black;
 }
 
 .today-weather {
@@ -119,4 +123,18 @@ h2 {
 
 .accordion-button {
   background-color: white;
+}
+
+.footer {
+  color: #ffffff;
+  text-shadow: 2px 1px 4px black;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ede1fd;
 }
