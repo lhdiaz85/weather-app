@@ -222,6 +222,8 @@ function showWeather(response) {
     //Update Button
     checkedFarenheit();
     mphConversion();
+    let now = document.querySelector(".today");
+    now.innerHTML = formatCurrentDate(new Date());
   } else {
     console.log("Error: Invalid city name");
   }

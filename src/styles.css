@@ -10,13 +10,13 @@ body {
 
 h1 {
   text-align: center;
-  font-size: 40px;
+  font-size: 45px;
   color: #ffffff;
   text-shadow: 2px 1px 4px black;
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 45px;
   padding-top: 25px;
   margin: 0;
 }
@@ -131,10 +131,15 @@ h2 {
 }
 
 a {
-  color: #ffffff;
+  color: #f4d175;
   text-decoration: none;
+  transition: all 200ms ease;
 }
 
 a:hover {
-  color: #ede1fd;
+  color: #f0c247;
+}
+
+.accordion {
+  --bs-accordion-active-bg: #ecf3ff;
 }
