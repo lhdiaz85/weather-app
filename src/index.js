@@ -50,7 +50,6 @@ function formatIndexLabel(index) {
 //Current Weather
 function showWeather(response) {
   if (response.data.city) {
-    console.log(response.data);
     //Display Data
     document.querySelector(".city-title").innerHTML = response.data.city;
     document.querySelector("#weather-icon-today").src =
@@ -77,21 +76,21 @@ function showWeather(response) {
     let now = document.querySelector(".today");
     now.innerHTML = formatCurrentDate(new Date());
   } else {
-    console.log("Error: Invalid city name");
+    console.log("Error dislaying current data: Invalid city");
   }
 }
 
 //Forecast Weather
 function showForecast(response) {
-  console.log(response.data.daily);
-  let forecast = response.data.daily;
-  let forecastElement = document.querySelector("#week-weather");
-  let forecastHTML = "";
-  //Display Data with Loop
-  forecast.forEach(function (forecastDay, index) {
-    forecastHTML =
-      forecastHTML +
-      `
+  if (response.data.city) {
+    let forecast = response.data.daily;
+    let forecastElement = document.querySelector("#week-weather");
+    let forecastHTML = "";
+    //Display Data with Loop
+    forecast.forEach(function (forecastDay, index) {
+      forecastHTML =
+        forecastHTML +
+        `
           <div class="accordion-item">
             <div class="accordion-header">
               <button
@@ -187,59 +186,62 @@ function showForecast(response) {
             </div>
           </div>
           `;
-  });
-  forecastElement.innerHTML = forecastHTML;
+    });
+    forecastElement.innerHTML = forecastHTML;
 
-  //Update Variables
+    //Update Variables
 
-  // Day 0
-  fHighDayZero = response.data.daily[0].temperature.maximum;
-  fLowDayZero = response.data.daily[0].temperature.minimum;
-  mphWindDayZero = response.data.daily[0].wind.speed;
+    // Day 0
+    fHighDayZero = response.data.daily[0].temperature.maximum;
+    fLowDayZero = response.data.daily[0].temperature.minimum;
+    mphWindDayZero = response.data.daily[0].wind.speed;
 
-  // Day 1
-  fHighDayOne = response.data.daily[1].temperature.maximum;
-  fLowDayOne = response.data.daily[1].temperature.minimum;
-  mphWindDayOne = response.data.daily[1].wind.speed;
+    // Day 1
+    fHighDayOne = response.data.daily[1].temperature.maximum;
+    fLowDayOne = response.data.daily[1].temperature.minimum;
+    mphWindDayOne = response.data.daily[1].wind.speed;
 
-  // Day 2
-  fHighDayTwo = response.data.daily[2].temperature.maximum;
-  fLowDayTwo = response.data.daily[2].temperature.minimum;
-  mphWindDayTwo = response.data.daily[2].wind.speed;
+    // Day 2
+    fHighDayTwo = response.data.daily[2].temperature.maximum;
+    fLowDayTwo = response.data.daily[2].temperature.minimum;
+    mphWindDayTwo = response.data.daily[2].wind.speed;
 
-  // Day 3
-  fHighDayThree = response.data.daily[3].temperature.maximum;
-  fLowDayThree = response.data.daily[3].temperature.minimum;
-  mphWindDayThree = response.data.daily[3].wind.speed;
+    // Day 3
+    fHighDayThree = response.data.daily[3].temperature.maximum;
+    fLowDayThree = response.data.daily[3].temperature.minimum;
+    mphWindDayThree = response.data.daily[3].wind.speed;
 
-  // Day 4
-  fHighDayFour = response.data.daily[4].temperature.maximum;
-  fLowDayFour = response.data.daily[4].temperature.minimum;
-  mphWindDayFour = response.data.daily[4].wind.speed;
+    // Day 4
+    fHighDayFour = response.data.daily[4].temperature.maximum;
+    fLowDayFour = response.data.daily[4].temperature.minimum;
+    mphWindDayFour = response.data.daily[4].wind.speed;
 
-  // Day 5
-  fHighDayFive = response.data.daily[5].temperature.maximum;
-  fLowDayFive = response.data.daily[5].temperature.minimum;
-  mphWindDayFive = response.data.daily[5].wind.speed;
+    // Day 5
+    fHighDayFive = response.data.daily[5].temperature.maximum;
+    fLowDayFive = response.data.daily[5].temperature.minimum;
+    mphWindDayFive = response.data.daily[5].wind.speed;
 
-  // Day 6
-  fHighDaySix = response.data.daily[6].temperature.maximum;
-  fLowDaySix = response.data.daily[6].temperature.minimum;
-  mphWindDaySix = response.data.daily[6].wind.speed;
+    // Day 6
+    fHighDaySix = response.data.daily[6].temperature.maximum;
+    fLowDaySix = response.data.daily[6].temperature.minimum;
+    mphWindDaySix = response.data.daily[6].wind.speed;
 
-  mphConversion();
+    mphConversion();
+  } else {
+    console.log("Error displaying forecast data: Invalid city");
+  }
 }
 
 function getCityCurrent(cityName) {
   let keySheCodes = "0ae8ed0af65d0db03aet4f1o89f6d9a8";
   let unitSheCodes = "imperial";
   let urlSheCodes = `https://api.shecodes.io/weather/v1/current?query=${cityName}&key=${keySheCodes}&units=${unitSheCodes}`;
-  console.log(urlSheCodes);
+
   axios
     .get(urlSheCodes)
     .then(showWeather)
     .catch((error) => {
-      console.log("Error fetching data from the SheCodes Weather API:", error);
+      console.log("Error fetching current data from SheCodes API:", error);
     });
 }
 
@@ -247,12 +249,12 @@ function getCityForecast(cityName) {
   let keySheCodes = "0ae8ed0af65d0db03aet4f1o89f6d9a8";
   let unitSheCodes = "imperial";
   let urlSheCodes = `https://api.shecodes.io/weather/v1/forecast?query=${cityName}&key=${keySheCodes}&units=${unitSheCodes}`;
-  console.log(urlSheCodes);
+
   axios
     .get(urlSheCodes)
     .then(showForecast)
     .catch((error) => {
-      console.log("Error fetching data from the SheCodes Weather API:", error);
+      console.log("Error fetching forecast data from SheCodes API:", error);
     });
 }
 
@@ -268,12 +270,12 @@ function getLocationCurrent(position) {
   let keySheCodes = "0ae8ed0af65d0db03aet4f1o89f6d9a8";
   let unitSheCodes = "imperial";
   let urlSheCodes = `https://api.shecodes.io/weather/v1/current?lon=${position.coords.longitude}&lat=${position.coords.latitude}&key=${keySheCodes}&units=${unitSheCodes}`;
-  console.log(urlSheCodes);
+
   axios
     .get(urlSheCodes)
     .then(showWeather)
     .catch((error) => {
-      console.log("Error fetching data from the SheCodes Weather API:", error);
+      console.log("Error fetching current data from SheCodes API:", error);
     });
 }
 
@@ -281,12 +283,12 @@ function getLocationForecast(position) {
   let keySheCodes = "0ae8ed0af65d0db03aet4f1o89f6d9a8";
   let unitSheCodes = "imperial";
   let urlSheCodes = `https://api.shecodes.io/weather/v1/forecast?lon=${position.coords.longitude}&lat=${position.coords.latitude}&key=${keySheCodes}&units=${unitSheCodes}`;
-  console.log(urlSheCodes);
+
   axios
     .get(urlSheCodes)
     .then(showForecast)
     .catch((error) => {
-      console.log("Error fetching data from the SheCodes Weather API:", error);
+      console.log("Error fetching forescast data from SheCodes API:", error);
     });
 }
 
@@ -299,7 +301,6 @@ function findLocation(event) {
 function checkedFarenheit() {
   button1.checked = true;
   button2.checked = false;
-  console.log("Farenheit selected");
 }
 
 function mphConversion() {
@@ -335,7 +336,6 @@ function mphConversion() {
 function checkedCelsius() {
   button1.checked = false;
   button2.checked = true;
-  console.log("Celsius selected");
 }
 
 function kmphConversion() {
