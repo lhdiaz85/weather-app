@@ -131,15 +131,9 @@ h2 {
 }
 
 a {
-  color: #f4d175;
-  text-decoration: none;
-  transition: all 200ms ease;
+  color: #f7df9e;
 }
 
 a:hover {
-  color: #f0c247;
-}
-
-.accordion {
-  --bs-accordion-active-bg: #ecf3ff;
+  text-decoration: none;
 }
