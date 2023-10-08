@@ -47,6 +47,40 @@ function formatIndexLabel(index) {
   return index + `Day`;
 }
 
+//Current Weather
+function showWeather(response) {
+  if (response.data.city) {
+    console.log(response.data);
+    //Display Data
+    document.querySelector(".city-title").innerHTML = response.data.city;
+    document.querySelector("#weather-icon-today").src =
+      response.data.condition.icon_url;
+    document.querySelector("#current-temp").innerHTML = Math.round(
+      response.data.temperature.current
+    );
+    document.querySelector("#current-description").innerHTML =
+      response.data.condition.description;
+    document.querySelector("#current-feel").innerHTML = Math.round(
+      response.data.temperature.feels_like
+    );
+    document.querySelector("#current-humidity").innerHTML =
+      response.data.temperature.humidity;
+    document.querySelector("#current-windspeed").innerHTML = Math.round(
+      response.data.wind.speed
+    );
+    //Update Variable
+    farenheitTemperature = response.data.temperature.current;
+    farenheitFeel = response.data.temperature.feels_like;
+    mphWind = response.data.wind.speed;
+    //Update Button
+    checkedFarenheit();
+    let now = document.querySelector(".today");
+    now.innerHTML = formatCurrentDate(new Date());
+  } else {
+    console.log("Error: Invalid city name");
+  }
+}
+
 //Forecast Weather
 function showForecast(response) {
   console.log(response.data.daily);
@@ -192,41 +226,8 @@ function showForecast(response) {
   fHighDaySix = response.data.daily[6].temperature.maximum;
   fLowDaySix = response.data.daily[6].temperature.minimum;
   mphWindDaySix = response.data.daily[6].wind.speed;
-}
 
-//Current Weather
-function showWeather(response) {
-  if (response.data.city) {
-    console.log(response.data);
-    //Display Data
-    document.querySelector(".city-title").innerHTML = response.data.city;
-    document.querySelector("#weather-icon-today").src =
-      response.data.condition.icon_url;
-    document.querySelector("#current-temp").innerHTML = Math.round(
-      response.data.temperature.current
-    );
-    document.querySelector("#current-description").innerHTML =
-      response.data.condition.description;
-    document.querySelector("#current-feel").innerHTML = Math.round(
-      response.data.temperature.feels_like
-    );
-    document.querySelector("#current-humidity").innerHTML =
-      response.data.temperature.humidity;
-    document.querySelector("#current-windspeed").innerHTML = Math.round(
-      response.data.wind.speed
-    );
-    //Update Variable
-    farenheitTemperature = response.data.temperature.current;
-    farenheitFeel = response.data.temperature.feels_like;
-    mphWind = response.data.wind.speed;
-    //Update Button
-    checkedFarenheit();
-    mphConversion();
-    let now = document.querySelector(".today");
-    now.innerHTML = formatCurrentDate(new Date());
-  } else {
-    console.log("Error: Invalid city name");
-  }
+  mphConversion();
 }
 
 function getCityCurrent(cityName) {
