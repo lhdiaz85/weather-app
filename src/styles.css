@@ -36,6 +36,7 @@ h2 {
 }
 
 .today {
+  font-size: 22px;
   text-align: center;
   color: #ffffff;
   text-shadow: 2px 1px 4px black;
